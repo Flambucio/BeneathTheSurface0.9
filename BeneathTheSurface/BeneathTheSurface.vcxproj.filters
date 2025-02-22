@@ -18,6 +18,12 @@
     <ClCompile Include="main.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Core.h">
@@ -27,6 +33,9 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="headers\World.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Player.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,6 @@
 #pragma once
 #include "World.h"
+#include "Player.h"
 
 namespace BenTheSur
 {
@@ -9,6 +10,7 @@ namespace BenTheSur
 		bool shouldClose = false;
 		double fpsAccumulator = 0.0;
 		World<Main> world;
+		Player player;
 		Main() : world(*this)
 		{
 			InitWindow(WIDTH,HEIGHT,CAPTION);
@@ -17,6 +19,7 @@ namespace BenTheSur
 		void Run()
 		{
 			world.Load();
+			player.Spawn(2 * TILESIZE, 15 * TILESIZE);
 			while (!WindowShouldClose() && !shouldClose)
 			{
 				BeginDrawing();
@@ -34,13 +37,17 @@ namespace BenTheSur
 
 		void Update()
 		{
+			player.PoolEvents();
 			world.Update();
+			player.Render();
+
 
 		}
 
 		void FixedUpdate()
 		{
-
+			player.PhysicsUpdate();
+			world.PhysicsUpdate();
 		}
 	};
 }
