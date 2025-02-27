@@ -1,6 +1,7 @@
 #pragma once
 #include "World.h"
 #include "Player.h"
+#include "Textures.h"
 
 namespace BenTheSur
 {
@@ -14,6 +15,8 @@ namespace BenTheSur
 		Main() : world(*this)
 		{
 			InitWindow(WIDTH,HEIGHT,CAPTION);
+			SetTargetFPS(FPS_COUNT);
+			Textures::Load();
 			
 		}
 		void Run()
@@ -28,6 +31,7 @@ namespace BenTheSur
 				while (fpsAccumulator > FIXED_TIMESTEP)
 				{
 					fpsAccumulator -= FIXED_TIMESTEP;
+					//PRINTLN(player.gravity_speed);
 					FixedUpdate();
 				}
 				Update();

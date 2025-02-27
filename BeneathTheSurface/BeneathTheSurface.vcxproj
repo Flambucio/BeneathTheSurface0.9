@@ -132,14 +132,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Core.h" />
     <ClInclude Include="headers\Main.h" />
+    <ClInclude Include="headers\maps.h" />
+    <ClInclude Include="headers\Objects.h" />
     <ClInclude Include="headers\Player.h" />
+    <ClInclude Include="headers\Textures.h" />
     <ClInclude Include="headers\World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\Items.png" />
+    <Image Include="resources\tiles.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

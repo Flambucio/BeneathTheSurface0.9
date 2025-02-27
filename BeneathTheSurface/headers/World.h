@@ -1,51 +1,7 @@
 	#pragma once
-	#include "Core.h"
+    #include "Objects.h"
 	namespace BenTheSur
 	{
-
-
-
-		class GameObject
-		{
-		public:
-			bool collide = false;
-			int type = 0;
-			int x = 0;
-			int y = 0;
-			Rectangle hitbox;
-			GameObject(int x, int y, bool collide) : x(x), y(y), collide(collide)
-			{
-				this->hitbox = { (float)x,(float)y,TILESIZE,TILESIZE };
-			}
-			virtual void Render()
-			{
-
-			}
-
-		};
-
-		class TestBG : public GameObject
-		{
-		public:
-			TestBG(int x, int y, bool collide) : GameObject(x, y, collide) {}
-			void Render()
-			{
-				DrawRectangle(x, y, TILESIZE, TILESIZE, BLUE);
-			}
-		};
-
-		class TestBlock : public GameObject
-		{
-		public:
-			TestBlock(int x, int y, bool collide) : GameObject(x, y, collide) {}
-			void Render()
-			{
-				DrawRectangle(x, y, TILESIZE, TILESIZE, BLACK);
-			}
-		};
-
-
-
 
 		template<typename Main>
 		class World
@@ -53,8 +9,8 @@
 		public:
 			Main& main;
 			World(Main& main) : main(main) {}
-			std::vector<std::unique_ptr<GameObject>> loadedBlocks;
-
+			std::vector<std::unique_ptr<TestGameObject>> loadedBlocks;
+			int level_selected = 1;
 			std::array<std::array<int, NUM_TILES_HOR>, NUM_TILES_VER> map = { {
 				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
 				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
@@ -70,8 +26,8 @@
 				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
 				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
 				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
-				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
-				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0}},
+				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
+				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0}},
 				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0}},
 				{{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}}
 			} };
@@ -108,11 +64,6 @@
 
 			void PhysicsUpdate()
 			{
-
-				if (main.player.dy < -5)
-				{
-					main.player.dy = -5;
-				}
 				if ( main.player.dy > 5)
 				{
 					main.player.dy = 5;
@@ -143,10 +94,14 @@
 
 			void ApplyMovement(bool coll_hor,bool coll_ver)
 			{
+				//PRINT("apply:");
+				//PRINTLN(main.player.dy);
 				if (!coll_hor)
 				{
 					main.player.ApplyMovementX();
 				}
+
+
 
 				if (!coll_ver)
 				{
@@ -159,16 +114,15 @@
 						main.player.can_jump = true;
 
 						// Posiziona esattamente sopra il blocco
-						main.player.y = (main.player.y / TILESIZE) * TILESIZE;
+						main.player.y = ((main.player.y + TILESIZE - 1) / TILESIZE) * TILESIZE;
+
 						main.player.dy = 0;
+						main.player.gravity_speed = 0;
 					}
 					else
 					{
 						main.player.can_jump = false;
-					}
-					if (main.player.dy < 0)
-					{
-						main.player.is_jumping = false;
+						main.player.dy = 0;
 					}
 				}
 			}

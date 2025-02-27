@@ -14,8 +14,8 @@ namespace BenTheSur
 		int dx = 0;
 		int dy = 0;
 		double jump_progress = 0;
-		bool is_jumping = false;
-		double gravity_speed = 1;
+		//bool is_jumping = false;
+		double gravity_speed = 0.1;
 		bool can_jump = true;
 		Rectangle hitbox = { 0,0,TILESIZE,TILESIZE };
 		void ResetMovement();

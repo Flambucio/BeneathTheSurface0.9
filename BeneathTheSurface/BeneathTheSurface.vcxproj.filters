@@ -24,6 +24,9 @@
     <ClCompile Include="Core.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Core.h">
@@ -38,5 +41,22 @@
     <ClInclude Include="headers\Player.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="headers\maps.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Objects.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Textures.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\Items.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\tiles.png">
+      <Filter>File di risorse</Filter>
+    </Image>
   </ItemGroup>
 </Project>
