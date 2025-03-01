@@ -14,7 +14,7 @@ void Pl::Fall()
 	//PRINTLN(gravity_speed);
 	if (dy == 0)
 	{
-		dy = 2; // Imposta una velocità di caduta iniziale
+		dy = 3; // Imposta una velocità di caduta iniziale
 	}
 
 	

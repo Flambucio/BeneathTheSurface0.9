@@ -1,5 +1,5 @@
 	#pragma once
-    #include "Objects.h"
+    #include "maps.h"
 	namespace BenTheSur
 	{
 
@@ -9,9 +9,10 @@
 		public:
 			Main& main;
 			World(Main& main) : main(main) {}
-			std::vector<std::unique_ptr<TestGameObject>> loadedBlocks;
+			std::vector<std::unique_ptr<GameObject>> loadedBlocks;
 			int level_selected = 1;
-			std::array<std::array<int, NUM_TILES_HOR>, NUM_TILES_VER> map = { {
+			std::array<std::array<int, NUM_TILES_HOR>, NUM_TILES_VER> loaded_map = Maps::map_test_blocks;
+	/*		std::array<std::array<int, NUM_TILES_HOR>, NUM_TILES_VER> map = {{
 				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
 				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
 				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}},
@@ -30,7 +31,7 @@
 				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0}},
 				{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0}},
 				{{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}}
-			} };
+			} };*/
 
 
 			void Load()
@@ -39,16 +40,8 @@
 				{
 					for (int j = 0;j < NUM_TILES_HOR;j++)
 					{
-						int map_num = map[i][j];
-						switch (map_num)
-						{
-						case 0:
-							loadedBlocks.push_back(std::make_unique<TestBG>(j * TILESIZE, i * TILESIZE, false));
-							break;
-						case 1:
-							loadedBlocks.push_back(std::make_unique<TestBlock>(j * TILESIZE, i * TILESIZE, true));
-							break;
-						}
+						int map_num = loaded_map[i][j];
+						SpawnStaticObj(i,j,map_num);
 					}
 				}
 			}
@@ -83,6 +76,14 @@
 						if (CheckCollisionRecs(future_rec_y, loadedBlocks[i]->hitbox))
 						{
 							collides_ver = true;
+							if (main.player.dy > 0)
+							{
+								main.player.can_jump = true;
+							}
+						}
+						else if (main.player.dy > 0)
+						{
+							main.player.can_jump = false;
 						}
 					}
 				}
@@ -106,6 +107,7 @@
 				if (!coll_ver)
 				{
 					main.player.ApplyMovementY();
+
 				}
 				else
 				{
@@ -121,9 +123,27 @@
 					}
 					else
 					{
-						main.player.can_jump = false;
 						main.player.dy = 0;
+						main.player.can_jump = false;
 					}
+				}
+			}
+
+			void SpawnStaticObj(int i, int j,int value)
+			{
+				int y = i * TILESIZE;
+				int x = j * TILESIZE;
+				if (value == dirt || value == stone || value == rock || value==grass)
+				{
+					loadedBlocks.push_back(std::make_unique<SolidBlock>(x, y, value));
+				}
+				else if (value == breakable_dirt || value == breakable_stone || value == breakable_rock)
+				{
+					loadedBlocks.push_back(std::make_unique<BreakableBlock>(x, y, value));
+				}
+				else if (value == bg_dirt || value == bg_stone || value == bg_rock)
+				{
+					loadedBlocks.push_back(std::make_unique<BGBlock>(x, y, value));
 				}
 			}
 

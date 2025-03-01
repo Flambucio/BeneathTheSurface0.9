@@ -45,7 +45,7 @@ namespace BenTheSur
 			world.Update();
 			player.Render();
 
-
+			
 		}
 
 		void FixedUpdate()

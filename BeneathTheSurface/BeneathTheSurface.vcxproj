@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Objects.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="main.cpp" />

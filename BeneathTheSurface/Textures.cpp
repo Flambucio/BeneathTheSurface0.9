@@ -4,17 +4,15 @@ using	Txt = BenTheSur::Textures;
 
 void Txt::LoadBlocks()
 {
-	Image image = LoadImage("resources/tiles.png");
-	blocks_tile_map = LoadTextureFromImage(image);
-	UnloadImage(image);
+	blocks_tile_map=LoadTexture("resources/tiles.png");
+	PRINT("BLOCK TEXTURE ID:");
+	TraceLog(LOG_INFO, "Texture ID: %d", Textures::blocks_tile_map.id);
 }
 
 
 void Txt::LoadItems()
 {
-	Image image = LoadImage("resources/Items.png");
-	items_tile_map= LoadTextureFromImage(image);
-	UnloadImage(image);
+	items_tile_map=LoadTexture("resources/Items.png");
 }
 
 void Txt::Load()
