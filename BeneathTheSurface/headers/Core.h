@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib/include/raylib.h"
+#include "State.h"
 
 #include <iostream>
 #include <memory>
@@ -9,6 +10,7 @@
 #include <fstream>
 #include <chrono>
 #include <array>
+#include <functional>
 
 #ifdef GAME_DEBUG
 #define PRINT(x) std::cout << x << " "
@@ -37,6 +39,7 @@
 #define MAX_FALL_SPEED 3.0f
 #define TEXTURE_SIZE_BLOCKS 32
 #define TEXTURE_SIZE_ITEMS 100
+#define TEXTURE_SIZE_PLAYER 100
 
 namespace BenTheSur
 {

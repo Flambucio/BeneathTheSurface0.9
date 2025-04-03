@@ -2,7 +2,7 @@
 
 namespace BenTheSur
 {
-    // TestGameObject Constructor
+    
     TestGameObject::TestGameObject(int x, int y, bool collide) : x(x), y(y), collide(collide)
     {
         this->hitbox = { (float)x, (float)y, TILESIZE, TILESIZE };
@@ -10,10 +10,10 @@ namespace BenTheSur
 
     void TestGameObject::Render()
     {
-        // Default render, override in subclasses
+        
     }
 
-    // GameObject Constructor
+    
     GameObject::GameObject(int x, int y, int type, BreakableBy breakable_by)
         : x(x), y(y), type(type), breakable_by(breakable_by)
     {
@@ -22,10 +22,10 @@ namespace BenTheSur
 
     void GameObject::Render()
     {
-        // Default render, override in subclasses
+        
     }
 
-    // TestBG Constructor
+    
     TestBG::TestBG(int x, int y, bool collide) : TestGameObject(x, y, collide) {}
 
     void TestBG::Render()
@@ -33,7 +33,7 @@ namespace BenTheSur
         DrawRectangle(x, y, TILESIZE, TILESIZE, BLUE);
     }
 
-    // TestBlock Constructor
+   
     TestBlock::TestBlock(int x, int y, bool collide) : TestGameObject(x, y, collide) {}
 
     void TestBlock::Render()
@@ -41,7 +41,7 @@ namespace BenTheSur
         DrawRectangle(x, y, TILESIZE, TILESIZE, BLACK);
     }
 
-    // SolidBlock Constructor
+    
     SolidBlock::SolidBlock(int x, int y, int type) : GameObject(x, y, type, unbreakable)
     {
         this->collide = true;
@@ -78,7 +78,7 @@ namespace BenTheSur
         DrawTexturePro(Textures::blocks_tile_map, source, dest, origin, rotation, tint);
     }
 
-    // BreakableBlock Constructor
+    
     BreakableBlock::BreakableBlock(int x, int y, int type) : GameObject(x, y, type, unbreakable)
     {
         this->collide = true;
@@ -117,7 +117,7 @@ namespace BenTheSur
         }
         else
         {
-            offset_texture_y = 0;
+            offset_texture_y = 3;
             switch (type)
             {
             case breakable_dirt:
@@ -145,7 +145,7 @@ namespace BenTheSur
         DrawTexturePro(Textures::blocks_tile_map, source, dest, origin, rotation, tint);
     }
 
-    // BGBlock Constructor
+    
     BGBlock::BGBlock(int x, int y, int type) : GameObject(x, y, type, unbreakable)
     {
         this->collide = false;
@@ -179,9 +179,10 @@ namespace BenTheSur
         DrawTexturePro(Textures::blocks_tile_map, source, dest, origin, rotation, tint);
     }
 
-    // Spike Constructor
+    
     Spike::Spike(int x, int y) : GameObject(x, y, spike, unbreakable)
     {
+        hitbox = { float(x) + TILESIZE / 2.8f,(float)y + TILESIZE / 4.0f,TILESIZE / 4.0f,TILESIZE / 2.0f };
         collide = true;
         offset_texture_x = 2;
         offset_texture_y = 1;
@@ -200,11 +201,13 @@ namespace BenTheSur
         float rotation = 0.0f;
         Color tint = WHITE;
         DrawTexturePro(Textures::blocks_tile_map, source, dest, origin, rotation, tint);
+        //DrawRectangleRec(hitbox, RED);
     }
 
-    // Lava Constructor
+    
     Lava::Lava(int x, int y) : GameObject(x, y, lava, unbreakable)
     {
+        hitbox = { (float)x,(float)y + TILESIZE / 2.5f,TILESIZE,TILESIZE / 2.0f };
         collide = true;
         offset_texture_x = 2;
         offset_texture_y = 2;
@@ -223,9 +226,10 @@ namespace BenTheSur
         float rotation = 0.0f;
         Color tint = WHITE;
         DrawTexturePro(Textures::blocks_tile_map, source, dest, origin, rotation, tint);
+        //DrawRectangleRec(hitbox, WHITE);
     }
 
-    // Item Constructor
+    
     Item::Item(int x, int y, int type) : GameObject(x, y, type, unbreakable)
     {
         collide = true;

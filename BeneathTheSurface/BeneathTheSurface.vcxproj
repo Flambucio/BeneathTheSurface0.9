@@ -109,7 +109,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Union\BeneathTheSurface\BeneathTheSurface\headers\raylib\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>winmm.lib;raylib.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>raylib.lib;winmm.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -127,28 +127,68 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Union\BeneathTheSurface\BeneathTheSurface\headers\raylib\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>winmm.lib;raylib.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>raylib.lib;winmm.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Audio.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Transition.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="Objects.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="headers\Audio.h" />
+    <ClInclude Include="headers\Button.h" />
     <ClInclude Include="headers\Core.h" />
+    <ClInclude Include="headers\Inventory.h" />
     <ClInclude Include="headers\Main.h" />
     <ClInclude Include="headers\maps.h" />
     <ClInclude Include="headers\Objects.h" />
     <ClInclude Include="headers\Player.h" />
+    <ClInclude Include="headers\State.h" />
     <ClInclude Include="headers\Textures.h" />
+    <ClInclude Include="headers\Transition.h" />
     <ClInclude Include="headers\World.h" />
+    <ClInclude Include="headers\PauseMenu.h" />
+    <ClInclude Include="headers\MainMenu.h" />
+    <ClInclude Include="headers\Level.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\1.png" />
+    <Image Include="resources\2.png" />
+    <Image Include="resources\3.png" />
+    <Image Include="resources\4.png" />
+    <Image Include="resources\5.png" />
+    <Image Include="resources\6.png" />
+    <Image Include="resources\background.png" />
+    <Image Include="resources\exit.png" />
     <Image Include="resources\Items.png" />
+    <Image Include="resources\menu.png" />
+    <Image Include="resources\play.png" />
+    <Image Include="resources\restart.png" />
+    <Image Include="resources\resume.png" />
+    <Image Include="resources\stickman_sprites.png" />
     <Image Include="resources\tiles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\Daydream.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\leveldata.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\break.ogg" />
+    <None Include="resources\collect.ogg" />
+    <None Include="resources\hit.ogg" />
+    <None Include="resources\jump.ogg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

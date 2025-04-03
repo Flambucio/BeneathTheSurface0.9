@@ -2,7 +2,6 @@
 
 using namespace BenTheSur;
 
-// Definizione delle variabili statiche (fuori dalla classe)
 std::chrono::high_resolution_clock::time_point DeltaTime::lastTime = std::chrono::high_resolution_clock::now();
 double DeltaTime::deltaTime = 0.0;
 

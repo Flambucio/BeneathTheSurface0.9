@@ -30,6 +30,27 @@
     <ClCompile Include="Objects.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Core.h">
@@ -53,6 +74,30 @@
     <ClInclude Include="headers\Textures.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="headers\Inventory.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\State.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\PauseMenu.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Button.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\MainMenu.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Level.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Transition.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Audio.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\Items.png">
@@ -61,5 +106,56 @@
     <Image Include="resources\tiles.png">
       <Filter>File di risorse</Filter>
     </Image>
+    <Image Include="resources\stickman_sprites.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\exit.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\1.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\2.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\3.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\4.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\5.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\6.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\resume.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\menu.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\play.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\restart.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+    <Image Include="resources\background.png">
+      <Filter>File di risorse</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\Daydream.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\leveldata.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\break.ogg" />
+    <None Include="resources\collect.ogg" />
+    <None Include="resources\jump.ogg" />
+    <None Include="resources\hit.ogg" />
   </ItemGroup>
 </Project>

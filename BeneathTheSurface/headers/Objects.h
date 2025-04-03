@@ -2,13 +2,10 @@
 #include "Core.h"
 #include "Textures.h"
 
-// Block Types
 enum BlockTypes { dirt = 1, stone, rock, grass, breakable_dirt, breakable_stone, breakable_rock, bg_dirt, bg_stone, bg_rock };
 
-// Breakable Types
 enum BreakableBy { unbreakable, shovel, pick, drill };
 
-// Interactive Objects
 enum InteractiveObjs { gold = 1, shovelobj, pickaxe, drillobj, spike, lava };
 
 namespace BenTheSur
@@ -30,7 +27,6 @@ namespace BenTheSur
     {
     public:
         bool collide = false;
-        bool broken = false;
         BreakableBy breakable_by = unbreakable;
         int type = 0;
         int x = 0;
