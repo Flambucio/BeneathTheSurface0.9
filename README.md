@@ -1,3 +1,1 @@
-semplice progetto di scuola, non giudicare la qualita del codice!!!! il tutto sta spiegato nell'html nella descrizione di quest'ultimo
-
-simple school project, dont judge code quality pls :)
+school project with a platformer game, created in c++ to have an actual executable of a game, compiled with visual studio solutions because i worry too much about logic and less about compiling when writing c++
